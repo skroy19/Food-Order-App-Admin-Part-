@@ -245,7 +245,7 @@
 
     <androidx.cardview.widget.CardView
 
-        android:id="@+id/card4"
+        android:id="@+id/profile"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginStart="44dp"
@@ -284,14 +284,14 @@
 
     <androidx.cardview.widget.CardView
 
-        android:id="@+id/card5"
+        android:id="@+id/outForDeliveryButton"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.582"
-        app:layout_constraintStart_toEndOf="@+id/card4"
+        app:layout_constraintStart_toEndOf="@+id/profile"
         app:layout_constraintTop_toBottomOf="@+id/card3">
 
         <LinearLayout

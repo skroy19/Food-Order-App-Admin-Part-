@@ -26,6 +26,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.outForDeliveryButton.setOnClickListener{
+            val intent = Intent(this, OutForDeliveryActivity::class.java)
+            startActivity(intent)
+        }
+        binding.profile.setOnClickListener{
+            val intent = Intent(this, AdminProfileActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
 
