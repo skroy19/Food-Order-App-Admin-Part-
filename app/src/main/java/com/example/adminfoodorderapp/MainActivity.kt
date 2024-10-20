@@ -35,6 +35,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.createUser.setOnClickListener{
+            val intent = Intent(this, CreateUserActivity::class.java)
+            startActivity(intent)
+        }
+        binding.pendingOrder.setOnClickListener{
+            val intent = Intent(this, PendingOrderActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
 
 

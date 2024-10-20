@@ -54,6 +54,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/pendingOrder"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:orientation="vertical">
@@ -334,7 +335,7 @@
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/card7">
+        app:layout_constraintStart_toEndOf="@+id/createUser">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -369,7 +370,7 @@
 
     <androidx.cardview.widget.CardView
 
-        android:id="@+id/card7"
+        android:id="@+id/createUser"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginStart="55dp"
