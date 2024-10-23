@@ -82,7 +82,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="57dp"
         android:layout_marginLeft="20dp"
@@ -103,7 +103,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="57dp"
         android:layout_marginLeft="16dp"
@@ -117,9 +117,9 @@
         android:inputType="textPassword"
         android:outlineAmbientShadowColor="@color/textColor2"
         android:paddingLeft="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmail"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"/>
+        app:layout_constraintEnd_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name"/>
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -131,9 +131,9 @@
         android:textAllCaps="false"
         android:textColor="@color/textColor2"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword">
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password">
 
     </androidx.appcompat.widget.AppCompatButton>
 

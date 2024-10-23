@@ -50,11 +50,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/signInEmail"
         android:layout_width="match_parent"
         android:layout_height="57dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/edittextshape"
         android:drawableLeft="@drawable/mail"
@@ -71,7 +71,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="57dp"
         android:layout_marginLeft="16dp"
@@ -85,9 +85,9 @@
         android:inputType="textPassword"
         android:outlineAmbientShadowColor="@color/textColor2"
         android:paddingLeft="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmail"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail">
+        app:layout_constraintEnd_toEndOf="@+id/signInEmail"
+        app:layout_constraintStart_toStartOf="@+id/signInEmail"
+        app:layout_constraintTop_toBottomOf="@+id/signInEmail">
 
     </EditText>
 
@@ -152,7 +152,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
         android:id="@+id/donotButton"
