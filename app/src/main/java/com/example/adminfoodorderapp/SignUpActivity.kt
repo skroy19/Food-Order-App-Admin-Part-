@@ -22,15 +22,16 @@ import com.google.firebase.ktx.Firebase
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var email:String
-    private lateinit var password:String
-    private lateinit var userName:String
-    private lateinit var nameOfRestuarent:String
+    private lateinit var email: String
+    private lateinit var password: String
+    private lateinit var userName: String
+    private lateinit var nameOfRestuarent: String
     private lateinit var database: DatabaseReference
 
-   private val binding: ActivitySignUpBinding by lazy {
-       ActivitySignUpBinding.inflate(layoutInflater)
-   }
+    private val binding: ActivitySignUpBinding by lazy {
+        ActivitySignUpBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,12 +43,9 @@ class SignUpActivity : AppCompatActivity() {
         database = Firebase.database.reference
 
 
-
-
-
         //for giving the locationlist
-        var locationList = arrayOf("Kawranbazar","Bashundhara","Mirpur","Motijheel")
-        val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,locationList)
+        var locationList = arrayOf("Kawranbazar", "Bashundhara", "Mirpur", "Motijheel")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, locationList)
         val autoCompleteTextView = binding.listOfLocation
         autoCompleteTextView.setAdapter(adapter)
 
@@ -59,10 +57,10 @@ class SignUpActivity : AppCompatActivity() {
             email = binding.email.text.toString().trim()
             password = binding.password.toString().trim()
 
-            if(email.isBlank() || userName.isBlank() || nameOfRestuarent.isBlank() || password.isBlank()){
-                Toast.makeText(this,"Please fill all details",Toast.LENGTH_SHORT).show()
-            }else{
-                createAccount(email,password)
+            if (email.isBlank() || userName.isBlank() || nameOfRestuarent.isBlank() || password.isBlank()) {
+                Toast.makeText(this, "Please fill all details", Toast.LENGTH_SHORT).show()
+            } else {
+                createAccount(email, password)
             }
 
 //            val intent = Intent(this,MainActivity::class.java)
@@ -70,7 +68,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.haveAccountButton.setOnClickListener {
-            val intent = Intent(this,LoginActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
@@ -82,16 +80,16 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun createAccount(email: String, password: String) {
-        auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
-            if(task.isSuccessful){
-                Toast.makeText(this,"Account created successfully",Toast.LENGTH_SHORT).show()
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
                 saveUserData()
-                val intent = Intent(this,LoginActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
-            }else{
-                Toast.makeText(this,"Account creation failed",Toast.LENGTH_SHORT).show()
-                Log.d("Account","CreateAccount: Failure",task.exception)
+            } else {
+                Toast.makeText(this, "Account creation failed", Toast.LENGTH_SHORT).show()
+                Log.d("Account", "CreateAccount: Failure", task.exception)
             }
         }
     }
@@ -102,12 +100,20 @@ class SignUpActivity : AppCompatActivity() {
         userName = binding.name.text.toString().trim()
         nameOfRestuarent = binding.restaurantName.text.toString().trim()
         email = binding.email.text.toString().trim()
-        password = binding.password.toString().trim()
+        password = binding.password.text.toString().trim()
 
-        val user = UserModel(userName,nameOfRestuarent,email,password)
-        val userId : String = FirebaseAuth.getInstance().currentUser!!.uid
 
-        //save user data Firebase database
-        database.child("user").child(userId).setValue(user)
+//        val user = UserModel(userName,nameOfRestuarent,email,password)
+//        val userId : String = FirebaseAuth.getInstance().currentUser!!.uid
+
+        val user = UserModel(userName, nameOfRestuarent, email, password)
+        val userId: String? = FirebaseAuth.getInstance().currentUser?.uid
+        userId?.let {
+            database.child("user").child(it).setValue(user)
+
+
+            //save user data Firebase database
+            database.child("user").child(userId).setValue(user)
+        }
     }
 }

@@ -161,6 +161,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/edittextshape"
         android:drawableLeft="@drawable/lock"
         android:drawablePadding="15dp"
@@ -169,6 +170,7 @@
         android:inputType="textPassword"
         android:outlineAmbientShadowColor="@color/textColor2"
         android:paddingLeft="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/createButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -180,14 +182,16 @@
         android:id="@+id/createButton"
         android:layout_width="125dp"
         android:layout_height="57dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/greenbuttonshape"
         android:text="Create Account"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/haveAccountButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
@@ -200,10 +204,10 @@
         android:text="Already have an account?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/createButton"
-        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="@+id/createButton"
         app:layout_constraintTop_toBottomOf="@+id/createButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.444" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
