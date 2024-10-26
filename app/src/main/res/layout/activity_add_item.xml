@@ -5,15 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".AddItemActivity">
 
     <ScrollView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -50,7 +51,7 @@
             </TextView>
 
             <EditText
-                android:id="@+id/enterFoodName"
+                android:id="@+id/foodName"
                 android:layout_width="0dp"
                 android:layout_height="57dp"
                 android:layout_marginStart="8dp"
@@ -69,7 +70,7 @@
             </EditText>
 
             <EditText
-                android:id="@+id/enterFoodPrice"
+                android:id="@+id/foodPrice"
                 android:layout_width="0dp"
                 android:layout_height="57dp"
                 android:layout_marginStart="8dp"
@@ -82,7 +83,7 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/enterFoodName">
+                app:layout_constraintTop_toBottomOf="@+id/foodName">
 
             </EditText>
 
@@ -103,7 +104,7 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/enterFoodPrice">
+                app:layout_constraintTop_toBottomOf="@+id/foodPrice">
 
             </TextView>
 
@@ -146,15 +147,49 @@
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="This is an amazing product to use."
-                android:textColor="@color/black"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:hint="Add description"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="@+id/textView9"
                 app:layout_constraintStart_toStartOf="@+id/textView9"
                 app:layout_constraintTop_toBottomOf="@+id/textView9">
 
             </EditText>
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/ing"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="47dp"-->
+            <!--                android:gravity="center_vertical"-->
+            <!--                android:paddingLeft="15dp"-->
+            <!--                android:text="Ingredints"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textSize="20sp"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/description"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/description"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/description">-->
+
+            <!--            </TextView>-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/ingrediant"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:background="@android:color/transparent"-->
+            <!--                android:text="This is an ingredints field."-->
+            <!--                android:textColor="@color/black"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/ing"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/ing"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/ing">-->
+
+            <!--            </EditText>-->
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/addItemButton"
@@ -167,7 +202,6 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/description"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="@+id/description"
                 app:layout_constraintTop_toBottomOf="@+id/description">
 
