@@ -21,11 +21,12 @@ import com.google.firebase.ktx.Firebase
 
 class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
+
     private lateinit var email: String
     private lateinit var password: String
     private lateinit var userName: String
     private lateinit var nameOfRestuarent: String
+    private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
     private val binding: ActivitySignUpBinding by lazy {
@@ -52,10 +53,10 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.createButton.setOnClickListener {
             //get text from editText
-            userName = binding.name.text.toString().trim()
-            nameOfRestuarent = binding.restaurantName.text.toString().trim()
+            userName = binding.name.text.toString()
+            nameOfRestuarent = binding.restaurantName.text.toString()
             email = binding.email.text.toString().trim()
-            password = binding.password.toString().trim()
+            password = binding.password.text.toString().trim()
 
             if (email.isBlank() || userName.isBlank() || nameOfRestuarent.isBlank() || password.isBlank()) {
                 Toast.makeText(this, "Please fill all details", Toast.LENGTH_SHORT).show()
@@ -84,8 +85,7 @@ class SignUpActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
                 saveUserData()
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this,LoginActivity::class.java))
                 finish()
             } else {
                 Toast.makeText(this, "Account creation failed", Toast.LENGTH_SHORT).show()
@@ -97,23 +97,21 @@ class SignUpActivity : AppCompatActivity() {
 
     //save data into database
     private fun saveUserData() {
-        userName = binding.name.text.toString().trim()
-        nameOfRestuarent = binding.restaurantName.text.toString().trim()
+        userName = binding.name.text.toString()
+        nameOfRestuarent = binding.restaurantName.text.toString()
         email = binding.email.text.toString().trim()
         password = binding.password.text.toString().trim()
 
 
-//        val user = UserModel(userName,nameOfRestuarent,email,password)
-//        val userId : String = FirebaseAuth.getInstance().currentUser!!.uid
-
         val user = UserModel(userName, nameOfRestuarent, email, password)
-        val userId: String? = FirebaseAuth.getInstance().currentUser?.uid
-        userId?.let {
-            database.child("user").child(it).setValue(user)
-
-
-            //save user data Firebase database
-            database.child("user").child(userId).setValue(user)
-        }
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+        database.child("user").child(userId).setValue(user)
+//        userId?.let {
+//            database.child("user").child(it).setValue(user)
+//
+//
+//            //save user data Firebase database
+//            database.child("user").child(userId).setValue(user)
+//        }
     }
 }
