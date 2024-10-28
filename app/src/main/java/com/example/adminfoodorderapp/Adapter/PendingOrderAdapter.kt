@@ -1,20 +1,27 @@
 package com.example.adminfoodorderapp.Adapter
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.adminfoodorderapp.PendingOrderActivity
 import com.example.adminfoodorderapp.databinding.PendingOrdersItemBinding
 
 class PendingOrderAdapter(
-    private val customerNames:ArrayList<String>,
-    private val quantity:ArrayList<String>,
-    private val foodImage:ArrayList<Int>,
-    private val context: Context
+    private val context: Context,
+    private val customerNames:MutableList<String>,
+    private val quantity:MutableList<String>,
+    private val foodImage:MutableList<String>,
+
+    private val itemClicked: OnItemClicked
     ): RecyclerView.Adapter<PendingOrderAdapter.PendingOrderViewHolder>() {
 
+    interface OnItemClicked{
+        fun onItemClickListener(position: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PendingOrderViewHolder {
         val binding = PendingOrdersItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -35,9 +42,11 @@ class PendingOrderAdapter(
             binding.apply {
                 customerName.text = customerNames[position]
                 pendingOrderQuantity.text = quantity[position]
-                pendingfoodImage.setImageResource(foodImage[position])
+                var uriString = foodImage[position]
+                var uri = Uri.parse(uriString)
+                Glide.with(context).load(uri).into(pendingfoodImage)
 
-                acceptButton.apply {
+                acceptButton.apply   {
                     if(!isAccepted){
                         text = "Accept"
                     }
@@ -57,6 +66,9 @@ class PendingOrderAdapter(
                             showToast("Order is Dispatched")
                         }
                     }
+                }
+                itemView.setOnClickListener {
+                    itemClicked.onItemClickListener(position)
                 }
             }
         }
