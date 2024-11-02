@@ -9,7 +9,7 @@ import com.example.adminfoodorderapp.databinding.DeliveryItemBinding
 import com.example.adminfoodorderapp.databinding.ItemItemBinding
 import kotlinx.coroutines.Delay
 
-class DeliveryAdapter(private val customerNames:ArrayList<String>,private val paymentStatus:ArrayList<String>): RecyclerView.Adapter<DeliveryAdapter.DeliveryViewHolder>() {
+class DeliveryAdapter(private val customerNames:MutableList<String>,private val paymentStatus:MutableList<Boolean>): RecyclerView.Adapter<DeliveryAdapter.DeliveryViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeliveryViewHolder {
@@ -26,10 +26,15 @@ class DeliveryAdapter(private val customerNames:ArrayList<String>,private val pa
         fun bind(position: Int) {
             binding.apply {
                 customerName.text = customerNames[position]
-                moneyStatus.text=paymentStatus[position]
+                if(paymentStatus[position]==true){
+                    moneyStatus.text = "Received"
+                }else{
+                    moneyStatus.text = "Not Received"
+                }
+
 
                 val colorMap = mapOf(
-                    "received" to Color.GREEN, "notReceived" to Color.RED, "pending" to Color.GRAY
+                    true to Color.GREEN, false to Color.RED
                 )
                 moneyStatus.setTextColor(colorMap[paymentStatus[position]]?:Color.BLACK)
                 status.backgroundTintList = ColorStateList.valueOf(colorMap[paymentStatus[position]]?:Color.BLACK)
